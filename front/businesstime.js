@@ -20,7 +20,7 @@ function fetchVideos() {
   });
 }
 
-/* adds autoplay and scales video to full size with js regex. hacky, but fuck it. */
+// adds autoplay and scales video to full size with js regex. hacky, but fuck it. 
 function enable_fullscreen(embed_code) {
 	if (/www.youtube.com/g.test(embed_code)) {
 		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param><param name=\"controls\" value=\"0\"><\/param>");
@@ -31,7 +31,7 @@ function enable_fullscreen(embed_code) {
 	return embed_code;
 }
 
-/* we only want youtube videos now, so only show youtube videos. */
+// we only want youtube videos now, so only show youtube videos. 
 function incrTillYouTube() {
   var reg = /www.youtube.com/g;
   while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos + 1 < playlist.length) {
@@ -80,6 +80,7 @@ function play() {
 }
 
 $('#go').live('click', function(event) {
+    alert('1');
     event.preventDefault();
     login();
 });
@@ -174,13 +175,12 @@ $(function() {
 	
 	// don't use w-a-s-d keys for nav if we're on login page
 	if (state != 0) {
-		else if (keycode == 87) up();
+		if (keycode == 87) up();
 		else if (keycode == 83) down();
 		else if (keycode == 65) left();
 		else if (keycode == 68) right();
 	}
     });
-
 
   $(document).ajaxError(function() {
     stage = 0;
@@ -195,4 +195,3 @@ $(function() {
     else if (keycode == 40) down();
   });
 });
-
