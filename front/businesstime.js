@@ -1,19 +1,34 @@
 var user;
 var pass;
-var playlist;
+var playlist = [];
 var cur_pos = 0;
 var stage = 0;
 var selected = 0;
 var items = ['#user', '#pass'];
 
+
+function fetchVideos() {
+  alert("fetching from " + playlist.length);
+  $.post("get-bullshit.php?start=" + playlist.length, 
+      {email: user, password: pass, start: playlist.length},  function(json) {
+	eval(json);
+	playlist = playlist.concat(tumblr_api_read.posts);
+    play();
+  });
+}
+
 function getNext() {
-    if ((cur_pos + 1) < playlist.length)
-	cur_pos++;
+  cur_pos++;
+  if (cur_pos == playlist.length)  
+    fetchVideos();
+  else
+    play();
 }
 
 function getPrevious() {
-    if (cur_pos > 0)
+  if (cur_pos > 0)
 	cur_pos--;
+  play();
 }
 
 function play() {
@@ -23,48 +38,13 @@ function play() {
 function login() {
     user = $('#user').val();
     pass = $('#pass').val();
+    cur_pos = 0;
+    playlist = [];
 
-
-    $.ajax({
-	url  : "get-bullshit.php",
-	type : "GET",
-	data : "email="+user+"&password="+pass,
-	success : function(json) {
-	    eval(json);
-	    playlist = tumblr_api_read.posts;
-	    play();
-	},
-	error : function(msg) {
-	    alert("error" + msg);
-	}
-    });
-
-
-    /*
-    $.ajax({
-	type      : 'POST',
-	//url       : 'www.tumblr.com/api/dashboard/json?type=video',
-	url       : "www.twitter.com",
-	data      : "email=emmett.butler321@gmail.com&password=April16!",
-	success   : function(data) {
-
-	    alert(data);
-	},
-	error     : function(msg) {
-	    alert("error");
-	}
-    });
-    */
-    
+    fetchVideos();
+	
     hide('#login', 100);  
     return false;
-
-    var authenticated = 'not yet';
-    user = $('#user').val();
-    pass = $('#pass').val();
-
-  hide('#login', 100);  
-  return false;
 }
 
 function hide(selector, ms) {
@@ -94,16 +74,15 @@ function getKey(key){
 }
 
 function up() {
-    if (stage == 0) {
+  if (stage == 0) {
 	selected--;
 	if (selected < 0)
-	    selected = 0;
-	$(items[selected]).select();
-    }
-    else {
+	  selected = 0;
+    $(items[selected]).select();
+  }
+  else {
 	getPrevious();
-	play();
-    }
+  }
 }
 
 function down() {
@@ -114,8 +93,7 @@ function down() {
 	$(items[selected]).select();
     }
     else {
-	getNext();
-	play();
+	  getNext();
     }
 }
 
@@ -144,7 +122,7 @@ $(function() {
     $('#user').select();
     $('#submit').click(login);
 
-    $(document).keydown(function (eh) {
+    $(document).keyup(function (eh) {
 	var keycode = getKey(eh);
 	if (keycode == 37) left();
 	else if (keycode == 38) up();
