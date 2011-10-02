@@ -10,11 +10,12 @@ function getFirst() {
 function login() {
   user = $('#user').val();
   pass = $('#pass').val();
-  $.post('http://www.tumblr.com/api/dashboard/json?type=video', {email: user, password: pass}, function(json) {
+  $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
+      {email: user, password: pass}, function(json) {
     eval(json);
     playlist = tumblr_api_read.posts;
-    $('#player').removeClass("hidden").html(getFirst().url);
-    alert(getFirst().'video-player');
+    var post = getFirst();
+    $('#player').removeClass("hidden").html(post['video-player']);
   });
   hide('#login', 100);  
   return false;
