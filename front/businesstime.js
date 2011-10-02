@@ -4,8 +4,7 @@ var playlist;
 var cur_post;
 var stage = 0;
 var selected = 0;
-var numitems = 3;
-var items = ['#user', '#pass', '#submit'];
+var items = ['#user', '#pass'];
 
 function getFirst() {
   return playlist[0]; 
@@ -44,12 +43,19 @@ function getKey(key){
 }
 
 function up() {
-
+  if (stage == 0) {
+    selected--;
+    if (selected < 0)
+      selected = 0;
+    $(items[selected]).select();
+  }
 }
 
 function down() {
   if (stage == 0) {
-    selected = (selected + 1) % numitems;
+    selected++;
+    if (selected >= items.length)
+      selected = items.length - 1;
     $(items[selected]).select();
   }
 }
@@ -59,7 +65,9 @@ function left() {
 }
 
 function right() {
-
+  if (stage == 0) {
+    login();
+  }
 }
 
 $(function() {
