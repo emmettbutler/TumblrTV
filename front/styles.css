@@ -5,7 +5,7 @@
 
 body, html {
   margin: 0; padding: 0;
-  background: url(http://www.bittbox.com/wp-content/uploads/2008/04/free_hires_wood_texture_5.jpg) no-repeat center center fixed;
+  background: url(wood.jpg) no-repeat center center fixed;
   background-size: 100%;
   font-family: 'Grease', sans-serif;
   display: block;
@@ -20,7 +20,7 @@ body, html {
 }
 
 #login {
-  color: white;
+  color: #BBBBBB;
   padding-left: 5em;
 }
 
@@ -33,6 +33,7 @@ body, html {
 
   #login input {
     width: 20em;
+    font-family: "Droid Sans";
 	font-size: 2.5em;
     border: 3px solid black;
     margin-bottom: .75em;
