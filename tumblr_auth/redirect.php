@@ -4,12 +4,16 @@
 session_start();
 require_once('tumblroauth/tumblroauth.php');
 require_once('config.php');
+require_once('localtunnel_key.php');
 
 /* Build TumblrOAuth object with client credentials. */
 $connection = new TumblrOAuth(CONSUMER_KEY, CONSUMER_SECRET);
+print_r($connection);
+echo "<br /><br />";
  
 /* Get temporary credentials. */
 $request_token = $connection->getRequestToken(OAUTH_CALLBACK);
+print_r($request_token);
 
 /* Save temporary credentials to session. */
 $_SESSION['oauth_token'] = $token = $request_token['oauth_token'];
