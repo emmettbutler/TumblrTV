@@ -20,11 +20,10 @@ function fetchVideos() {
 
 /* adds autoplay and scales video to full size with js regex */
 function enable_fullscreen(embed_code) {
-	var ytmatch=/www.youtube.com/g;
-	if (ytmatch.test(embed_code)) {
+	if (/www.youtube.com/g.test(embed_code)) {
 		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param><param name=\"controls\" value=\"0\"><\/param>");
 		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;controls=0&amp;autoplay=1&amp;rel=0");
-		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" controls=\"0\" autoplay=\"true\"");
+		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" controls=\"0\" autoplay=\"true\"");	
 	}
 	return embed_code;
 }
@@ -64,7 +63,23 @@ function getPrevious() {
 }
 
 function play() {
-    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
+	$('#info-box').fadeIn(800, function() {
+		
+		$.gritter.add({
+				// (string | mandatory) the heading of the notification
+				title: playlist[cur_pos]['name'],
+				// (string | mandatory) the text inside the notification
+				text: playlist[cur_pos]['video-caption'],
+				// (string | optional) the image to display on the left
+				image: playlist[cur_pos]['avatar_url_40'],
+				// (bool | optional) if you want it to fade out on its own or just sit there
+				sticky: false,
+				// (int | optional) the time you want it to be alive for before fading out
+				time: '200'
+			});		
+		}
+	);
+   $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
 }
 
 function login() {
