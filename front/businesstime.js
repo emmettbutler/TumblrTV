@@ -22,9 +22,9 @@ function fetchVideos() {
 function enable_fullscreen(embed_code) {
 	var ytmatch=/www.youtube.com/g;
 	if (ytmatch.test(embed_code)) {
-		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param>");
-		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;autoplay=1&amp;rel=0");
-		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" autoplay=\"true\"");
+		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param><param name=\"controls\" value=\"0\"><\/param>");
+		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;controls=0&amp;autoplay=1&amp;rel=0");
+		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" controls=\"0\" autoplay=\"true\"");
 	}
 	return embed_code;
 }
@@ -34,6 +34,8 @@ function incrTillYouTube() {
   while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos + 1 < playlist.length) {
     cur_pos++;
   }
+  if (!reg.test(playlist[cur_pos]['video-player']))
+    decrTillYouTube();
 }
 
 function decrTillYouTube() {
@@ -41,6 +43,8 @@ function decrTillYouTube() {
   while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos > 0) {
     cur_pos--;
   }
+  if (!reg.test(playlist[cur_pos]['video-player']))
+    incrTillYouTube();
 }
 
 function getNext() {
