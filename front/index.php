@@ -28,7 +28,7 @@
     
     <section id="menu" class="hidden">
     </section>
-	<div class="cover hidden">
+	<div id="cover" class="hidden">
 	</div>
     <section id="player" class="hidden">
     </section>

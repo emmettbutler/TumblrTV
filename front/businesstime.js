@@ -4,7 +4,7 @@ var playlist = [];
 var cur_pos = 0;
 var stage = 0;
 var selected = 0;
-var items = ['#user', '#pass'];
+var items = ['#user', '#pass', '#go'];
 
 
 function fetchVideos() {
@@ -67,7 +67,6 @@ function getPrevious() {
 }
 
 function play() {
-	$('.cover').removeClass("hidden");
 	// show growl-like notification
 	$.gritter.add({
 		title: playlist[cur_pos]['tumblelog']['title'],
@@ -76,7 +75,8 @@ function play() {
 		sticky: false,
 		time: '7500'
 	});		
-   $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
+	$('#cover').removeClass("hidden");
+    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
 }
 
 function login() {
@@ -158,7 +158,7 @@ function right() {
 
 $(function() {
     $('#user').select();
-    $('#submit').click(login);
+    $('#go').click(login);
 
     $(document).keyup(function (eh) {
 	var keycode = getKey(eh);
@@ -172,6 +172,7 @@ $(function() {
 	else if (keycode == 65) left();
 	else if (keycode == 68) right();
     });
+
 
   $(document).ajaxError(function() {
     stage = 0;
