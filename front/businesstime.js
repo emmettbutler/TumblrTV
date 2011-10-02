@@ -8,7 +8,8 @@ var items = ['#user', '#pass'];
 
 
 function fetchVideos() {
-  $.post("get-bullshit.php", 
+  alert("fetching from " + playlist.length);
+  $.post("get-bullshit.php?start=" + playlist.length, 
       {email: user, password: pass, start: playlist.length},  function(json) {
 	eval(json);
 	playlist = playlist.concat(tumblr_api_read.posts);
@@ -18,7 +19,8 @@ function fetchVideos() {
 
 function getNext() {
   cur_pos++;
-  if (cur_pos == playlist.length)
+  alert(cur_pos);
+  if (cur_pos == playlist.length)  
     fetchVideos();
   else
     play();
@@ -71,15 +73,15 @@ function getKey(key){
 }
 
 function up() {
-    if (stage == 0) {
+  if (stage == 0) {
 	selected--;
 	if (selected < 0)
-	    selected = 0;
-	$(items[selected]).select();
-    }
-    else {
+	  selected = 0;
+    $(items[selected]).select();
+  }
+  else {
 	getPrevious();
-    }
+  }
 }
 
 function down() {
