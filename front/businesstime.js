@@ -19,10 +19,11 @@ function fetchVideos() {
 
 /* adds autoplay and scales video to full size with js regex */
 function enable_fullscreen(embed_code) {
-	if (video.test("www.youtube.com+")) {
-		embed_code.replace("<\param>","</param><param name="autoplay" value="true"></param>");
-		embed_code.replace("&amp;rel=0","&amp;autoplay=1&amp;rel=0");
-		embed_code.replace("width=\"\d\d\d\" height=\"\d\d\d\"", "width=\"100%\" height=\"100%\"");
+	var ytmatch=/www.youtube.com/g;
+	if (ytmatch.test(embed_code)) {
+		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param>");
+		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;autoplay=1&amp;rel=0");
+		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" autoplay=\"true\"");
 	}
 
 }
