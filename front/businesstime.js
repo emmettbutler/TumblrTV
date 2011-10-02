@@ -21,6 +21,7 @@ function play() {
 }
 
 function login() {
+<<<<<<< HEAD
     user = $('#user').val();
     pass = $('#pass').val();
     /*
@@ -53,6 +54,21 @@ function login() {
     
     hide('#login', 100);  
     return false;
+=======
+  var authenticated = 'not yet';
+  user = $('#user').val();
+  pass = $('#pass').val();
+
+  $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
+      {email: user, password: pass}, function(json) { 
+    eval(json);
+    playlist = tumblr_api_read.posts;
+    play();
+  });
+
+  hide('#login', 100);  
+  return false;
+>>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 }
 
 function hide(selector, ms) {
@@ -63,6 +79,11 @@ function hide(selector, ms) {
 
 function show(selector, ms) {
     $(selector).removeClass("hidden").animate({opacity: 1}, ms);
+}
+
+function showLogin() {
+  $('#player').addClass('hidden');
+  show('#login', 100);
 }
 
 function getKey(key){
@@ -103,12 +124,19 @@ function down() {
 }
 
 function left() {
+<<<<<<< HEAD
     if (stage == 1) {
 	$('#player').addClass('hidden');
 	show('#login', 100);
 	cur_pos = 0;
 	stage = 0;
     }
+=======
+  if (stage == 1) {
+    showLogin();
+    stage = 0;
+  }
+>>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 }
 
 function right() {
@@ -122,6 +150,7 @@ $(function() {
     $('#user').select();
     $('#submit').click(login);
 
+<<<<<<< HEAD
     $(document).keydown(function (eh) {
 	var keycode = getKey(eh);
 	if (keycode == 37) left();
@@ -129,5 +158,19 @@ $(function() {
 	else if (keycode == 39) right();
 	else if (keycode == 40) down();
     });
+=======
+  $(document).ajaxError(function() {
+    stage = 0;
+    showLogin();
+  });
+
+  $(document).keydown(function (eh) {
+    var keycode = getKey(eh);
+    if (keycode == 37) left();
+    else if (keycode == 38) up();
+    else if (keycode == 39) right();
+    else if (keycode == 40) down();
+  });
+>>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 
 });
