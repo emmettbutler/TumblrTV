@@ -20,17 +20,18 @@ function fetchVideos() {
   });
 }
 
-/* adds autoplay and scales video to full size with js regex */
+/* adds autoplay and scales video to full size with js regex. hacky, but fuck it. */
 function enable_fullscreen(embed_code) {
-	var ytmatch=/www.youtube.com/g;
-	if (ytmatch.test(embed_code)) {
+	if (/www.youtube.com/g.test(embed_code)) {
 		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param><param name=\"controls\" value=\"0\"><\/param>");
 		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;controls=0&amp;autoplay=1&amp;rel=0");
-		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" controls=\"0\" autoplay=\"true\"");
+		embed_code = embed_code.replace("wmode=\"transparent\"","wmode=\"opaque\"");
+		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" controls=\"0\" autoplay=\"true\"");	
 	}
 	return embed_code;
 }
 
+/* we only want youtube videos now, so only show youtube videos. */
 function incrTillYouTube() {
   var reg = /www.youtube.com/g;
   while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos + 1 < playlist.length) {
@@ -59,15 +60,27 @@ function getNext() {
 
 function getPrevious() {
   if (cur_pos > 0) {
-	cur_pos--;
+	 cur_pos--;
     decrTillYouTube();
     play();
   }
 }
 
 function play() {
+<<<<<<< HEAD
     $('#player').removeClass("hidden").html($(enable_fullscreen(playlist[cur_pos]['video-player'])));
 	$('.cover').removeClass("hidden");
+=======
+	// show growl-like notification
+	$.gritter.add({
+		title: playlist[cur_pos]['tumblelog']['title'],
+		text: (playlist[cur_pos]['video-caption'] ? playlist[cur_pos]['video-caption'] : playlist[cur_pos]['date']),
+		image: playlist[cur_pos]['tumblelog']['avatar_url_40'],
+		sticky: false,
+		time: '7500'
+	});		
+   $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
+>>>>>>> eb8e9a08beedd23ce83947aa68f16830764daa21
 }
 
 function login() {
@@ -84,7 +97,7 @@ function login() {
 
 function hide(selector, ms) {
     $(selector).animate({opacity: 0}, ms, function() {
-	$(selector).addClass("hidden");
+	 $(selector).addClass("hidden");
     });
 }
 
@@ -95,6 +108,8 @@ function show(selector, ms) {
 function showLogin() {
   $('#player').addClass('hidden');
   show('#login', 100);
+  cur_pos = 0;
+  stage = 0;
 }
 
 function getKey(key){
@@ -133,16 +148,8 @@ function down() {
 }
 
 function left() {
-    if (stage == 1) {
-	$('#player').addClass('hidden');
-	show('#login', 100);
-	cur_pos = 0;
-	stage = 0;
-    }
-
   if (stage == 1) {
     showLogin();
-    stage = 0;
   }
 }
 
@@ -175,7 +182,7 @@ $(function() {
     showLogin();
   });
 
-  $(document).keydown(function (eh) {
+  $(document).keyup(function (eh) {
     var keycode = getKey(eh);
     if (keycode == 37) left();
     else if (keycode == 38) up();
