@@ -24,13 +24,29 @@ function login() {
   var authenticated = 'not yet';
   user = $('#user').val();
   pass = $('#pass').val();
-
-  $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
+/*
+  $.post('http://www.tumblr.com/api/dashboard/json?type=video&email=emmett.butler321@gmail.com&password=April16!', 
       {email: user, password: pass}, function(json) { 
     eval(json);
     playlist = tumblr_api_read.posts;
     play();
   });
+  $.ajax({
+    type : 'post',
+    url  : "http://www.tumblr.com/api/dashboard/json?type=video&email=emmett.butler321@gmail.com&password=April16!",
+    success : function(r) { alert(r); }
+  });*/
+  $.ajax({
+    type : 'post',
+    url  : "./get-bullshit.php",
+    success : function(json) {
+		eval(json);
+		playlist = tumblr_api_read.posts;
+		play();
+	}
+	}); 
+}
+
 
   hide('#login', 100);  
   return false;
