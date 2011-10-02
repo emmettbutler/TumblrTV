@@ -30,7 +30,6 @@ function login() {
 	type : "GET",
 	data : "email="+user+"&password="+pass,
 	success : function(json) {
-	    alert(json);
 	    eval(json);
 	    playlist = tumblr_api_read.posts;
 	    play();
@@ -38,7 +37,6 @@ function login() {
 	error : function(msg) {
 	    alert("error" + msg);
 	}
-
     });
 
 
