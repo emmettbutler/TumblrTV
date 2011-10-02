@@ -21,7 +21,6 @@ function play() {
 }
 
 function login() {
-<<<<<<< HEAD
     user = $('#user').val();
     pass = $('#pass').val();
     /*
@@ -36,7 +35,7 @@ function login() {
       alert("2");
       play();
       });
-    */
+    
     $.ajax({
 	type      : 'POST',
 	//url       : 'www.tumblr.com/api/dashboard/json?type=video',
@@ -54,11 +53,10 @@ function login() {
     
     hide('#login', 100);  
     return false;
-=======
   var authenticated = 'not yet';
   user = $('#user').val();
   pass = $('#pass').val();
-/*
+
   $.post('http://www.tumblr.com/api/dashboard/json?type=video&email=emmett.butler321@gmail.com&password=April16!', 
       {email: user, password: pass}, function(json) { 
     eval(json);
@@ -84,7 +82,6 @@ function login() {
 
   hide('#login', 100);  
   return false;
->>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 }
 
 function hide(selector, ms) {
@@ -140,19 +137,16 @@ function down() {
 }
 
 function left() {
-<<<<<<< HEAD
     if (stage == 1) {
 	$('#player').addClass('hidden');
 	show('#login', 100);
 	cur_pos = 0;
 	stage = 0;
     }
-=======
   if (stage == 1) {
     showLogin();
     stage = 0;
   }
->>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 }
 
 function right() {
@@ -166,7 +160,6 @@ $(function() {
     $('#user').select();
     $('#submit').click(login);
 
-<<<<<<< HEAD
     $(document).keydown(function (eh) {
 	var keycode = getKey(eh);
 	if (keycode == 37) left();
@@ -174,7 +167,6 @@ $(function() {
 	else if (keycode == 39) right();
 	else if (keycode == 40) down();
     });
-=======
   $(document).ajaxError(function() {
     stage = 0;
     showLogin();
@@ -187,6 +179,5 @@ $(function() {
     else if (keycode == 39) right();
     else if (keycode == 40) down();
   });
->>>>>>> afe54c0149295719558736a3665c6545ae5779bc
 
 });
