@@ -121,7 +121,7 @@ $(function() {
     $('#user').select();
     $('#submit').click(login);
 
-    $(document).keydown(function (eh) {
+    $(document).keyup(function (eh) {
 	var keycode = getKey(eh);
 	if (keycode == 37) left();
 	else if (keycode == 38) up();
