@@ -21,14 +21,17 @@ function play() {
 }
 
 function login() {
+  var authenticated = 'not yet';
   user = $('#user').val();
   pass = $('#pass').val();
+
   $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
-      {email: user, password: pass}, function(json) {
+      {email: user, password: pass}, function(json) { 
     eval(json);
     playlist = tumblr_api_read.posts;
     play();
   });
+
   hide('#login', 100);  
   return false;
 }
@@ -41,6 +44,11 @@ function hide(selector, ms) {
 
 function show(selector, ms) {
   $(selector).removeClass("hidden").animate({opacity: 1}, ms);
+}
+
+function showLogin() {
+  $('#player').addClass('hidden');
+  show('#login', 100);
 }
 
 function getKey(key){
@@ -82,9 +90,7 @@ function down() {
 
 function left() {
   if (stage == 1) {
-    $('#player').addClass('hidden');
-    show('#login', 100);
-	cur_pos = 0;
+    showLogin();
     stage = 0;
   }
 }
@@ -99,6 +105,11 @@ function right() {
 $(function() {
   $('#user').select();
   $('#submit').click(login);
+
+  $(document).ajaxError(function() {
+    stage = 0;
+    showLogin();
+  });
 
   $(document).keydown(function (eh) {
     var keycode = getKey(eh);
