@@ -20,8 +20,8 @@
     <section id="login">
       <form action="#" id="loginform">
         <h1>Sign in to Tumblr.</h1>
-        <input type="text" name="user" id="user" value="emmett.butler321@gmail.com" placeholder="Username" />
-        <input type="password" name="pass" id="pass" value="April16!" placeholder="Password" />
+        <input type="text" name="user" id="user" placeholder="Email" />
+        <input type="password" name="pass" id="pass" placeholder="Password" />
         <a href="#" id="go">Log in</a>
       </form>
     </section>
