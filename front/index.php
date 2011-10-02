@@ -19,12 +19,13 @@
         <input type="text" name="user" id="user" value="emmett.butler321@gmail.com" placeholder="Username" />
         <input type="password" name="pass" id="pass" value="April16!" placeholder="Password" />
       </form>
+	<a href="#" onclick="right()">Log in</a>
     </section>
     <section id="menu" class="hidden">
-
     </section>
+	<div id="cover" class="hidden">
+	</div>
     <section id="player" class="hidden">
-
     </section>
   </body>
 </html>
