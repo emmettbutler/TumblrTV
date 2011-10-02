@@ -168,8 +168,8 @@ $(function() {
 	else if (keycode == 40) down();
 	
 	// don't use w-a-s-d keys for nav if we're on login page
-	if (state != 0) {
-		else if (keycode == 87) up();
+	if (stage != 0) {
+		if (keycode == 87) up();
 		else if (keycode == 83) down();
 		else if (keycode == 65) left();
 		else if (keycode == 68) right();
