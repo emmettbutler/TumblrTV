@@ -13,8 +13,10 @@ function fetchVideos() {
       {email: user, password: pass, start: playlist.length},  function(json) {
 	eval(json);
 	playlist = playlist.concat(tumblr_api_read.posts);
+    
     incrTillYouTube();
     play();
+
   });
 }
 
@@ -64,8 +66,8 @@ function getPrevious() {
 }
 
 function play() {
-	$('#cover').removeClass("hidden");
-    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
+    $('#player').removeClass("hidden").html($(enable_fullscreen(playlist[cur_pos]['video-player'])));
+	$('.cover').removeClass("hidden");
 }
 
 function login() {
@@ -181,3 +183,4 @@ $(function() {
     else if (keycode == 40) down();
   });
 });
+

@@ -47,16 +47,19 @@ body {
     width: 8em;
   }
 
-#cover {
+.cover {
 	width: 100%;
 	height: 100%;
-	z-index: 1000;
+	z-index: 1000 !important;
 	background-color: rgba(0, 0, 0, 0);
 	position: absolute;
+	left: 0px;
+	top: 0px;
 }
 
 #menu {
 }
 
 #player {
+z-index: 1 !important;
 }
