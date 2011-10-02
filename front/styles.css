@@ -1,8 +1,18 @@
+@font-face {
+    font-family: "Grease";
+	src: url("grease.ttf");
+}
+
 body, html {
   margin: 0; padding: 0;
-  background: url(http://fc06.deviantart.net/fs71/f/2010/048/6/4/Wood_panel_texture_by_plastikmaniac.jpg);
-  font-family: 'Droid Sans', sans-serif;
+  background: url(http://fc06.deviantart.net/fs71/f/2010/048/6/4/Wood_panel_texture_by_plastikmaniac.jpg) no-repeat center center fixed;
+  background-size: 100%;
+  font-family: 'Grease', sans-serif;
   display: block;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .hidden {
