@@ -22,12 +22,13 @@ body, html {
 
 #login {
   position: relative;
-  width: 630px;
-  height: 393px;
-  top: 151px;
-  left: 112px;
+  width: 605px;
+  height: 335px;
+  top: 168px;
+  left: 122px;
   padding: 91 0  0 115;
   background: url('images/screen.png');
+  z-index: 3;
 }
 
   #login h1 {

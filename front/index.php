@@ -14,7 +14,7 @@
     <script type="text/javascript" src="businesstime.js"></script>
     <script type="text/javascript" src="boxee-control.js"></script>
   </head>
-  <body>
+  <body>    
     <div id="frame">
     </div>
     <section id="login">
@@ -25,6 +25,7 @@
         <a href="#" id="go">Log in</a>
       </form>
     </section>
+    
     <section id="menu" class="hidden">
     </section>
 	<div class="cover hidden">
