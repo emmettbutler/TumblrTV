@@ -15,7 +15,7 @@ body, html {
 #frame {
   width: 971px;
   height: 719px;
-  background: url('images/frame.png');
+  background: url('images/frame2.png');
   z-index: 2;
   position: absolute;
 }
@@ -36,6 +36,8 @@ body, html {
     width: 477px;
     height: 63px;
     margin: 0;
+    margin-bottom: .5em;
+    margin-top: -1em;
     padding: 0;
     background: url('images/login.png');
   }
@@ -59,6 +61,7 @@ body, html {
 
   #login #go {
     display: table-cell;
+    text-decoration: none;
     font-family: Helvetica, Arial, Sans-serif;
     background: #dfdfdf;
 	font-size: 18pt;
