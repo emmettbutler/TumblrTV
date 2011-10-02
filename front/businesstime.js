@@ -1,13 +1,23 @@
 var user;
 var pass;
 var playlist;
-var cur_post;
+var cur_pos = 0;
 var stage = 0;
 var selected = 0;
 var items = ['#user', '#pass'];
 
-function getFirst() {
-  return playlist[0]; 
+function getNext() {
+  if ((cur_pos + 1) < playlist.length)
+    cur_pos++;
+}
+
+function getPrevious() {
+  if (cur_pos > 0)
+    cur_pos--;
+}
+
+function play() {
+    $('#player').removeClass("hidden").html(playlist[cur_pos]['video-player']);
 }
 
 function login() {
@@ -17,8 +27,7 @@ function login() {
       {email: user, password: pass}, function(json) {
     eval(json);
     playlist = tumblr_api_read.posts;
-    var post = getFirst();
-    $('#player').removeClass("hidden").html(post['video-player']);
+    play();
   });
   hide('#login', 100);  
   return false;
@@ -52,6 +61,10 @@ function up() {
       selected = 0;
     $(items[selected]).select();
   }
+  else {
+    getPrevious();
+    play();
+  }
 }
 
 function down() {
@@ -60,6 +73,10 @@ function down() {
     if (selected >= items.length)
       selected = items.length - 1;
     $(items[selected]).select();
+  }
+  else {
+    getNext();
+    play();
   }
 }
 
