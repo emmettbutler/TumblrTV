@@ -7,12 +7,6 @@ body, html {
 
 .hidden {
   display: none;
-  -webkit-border-radius: none;
-  -moz-border-radius: none;
-  border-radius: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 
 #login {
@@ -30,7 +24,6 @@ body, html {
 
   #login input {
     width: 20em;
-    display: block;
 	font-size: 2.5em;
     border: 3px solid black;
     margin-bottom: .75em;
