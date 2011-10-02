@@ -2,16 +2,28 @@ function findClosest(id, increasing) {
     var step = increasing ? 1 : -1;
     for(var i=id+step; i>=0 && i<=playlist.length; i+=step)
         if( playlist[id] )
-            return id;
+            return playlist[id];
 }
 
-function playNext(id) {
-    megaplaya.api_nextVideo();
-		return findClosest(id, true);
+function getNext(id) {
+		curr_post = findClosest(id, true);
+		play(curr_post);
 }
 
-function playPrevious(id) {
-		return findClosest(id, false);
+function getPrevious(id) {
+		curr_post findClosest(id, false);
+		play(curr_post);
+}
+
+function play(post) {
+		$(post.url).embedly({
+				key:':531a832eec9e11e0bd394040d3dc5c07',
+				wmode: 'window',
+				autoplay: true,
+				success: function(oembed, dict){
+            alert(oembed.title);
+        });
+		});
 }
 
 
