@@ -1,19 +1,33 @@
 var user;
 var pass;
-var playlist;
+var playlist = [];
 var cur_pos = 0;
 var stage = 0;
 var selected = 0;
 var items = ['#user', '#pass'];
 
+
+function fetchVideos() {
+  $.post("get-bullshit.php", 
+      {email: user, password: pass, start: playlist.length},  function(json) {
+	eval(json);
+	playlist = playlist.concat(tumblr_api_read.posts);
+    play();
+  });
+}
+
 function getNext() {
-    if ((cur_pos + 1) < playlist.length)
-	cur_pos++;
+  cur_pos++;
+  if (cur_pos == playlist.length)
+    fetchVideos();
+  else
+    play();
 }
 
 function getPrevious() {
-    if (cur_pos > 0)
+  if (cur_pos > 0)
 	cur_pos--;
+  play();
 }
 
 function play() {
@@ -24,47 +38,10 @@ function login() {
     user = $('#user').val();
     pass = $('#pass').val();
 
-
-    $.ajax({
-	url  : "get-bullshit.php",
-	type : "GET",
-	data : "email="+user+"&password="+pass,
-	success : function(json) {
-	    eval(json);
-	    playlist = tumblr_api_read.posts;
-	    play();
-	},
-	error : function(msg) {
-	    alert("error" + msg);
-	}
-    });
-
-
-    /*
-    $.ajax({
-	type      : 'POST',
-	//url       : 'www.tumblr.com/api/dashboard/json?type=video',
-	url       : "www.twitter.com",
-	data      : "email=emmett.butler321@gmail.com&password=April16!",
-	success   : function(data) {
-
-	    alert(data);
-	},
-	error     : function(msg) {
-	    alert("error");
-	}
-    });
-    */
-    
+    fetchVideos();
+	
     hide('#login', 100);  
     return false;
-
-    var authenticated = 'not yet';
-    user = $('#user').val();
-    pass = $('#pass').val();
-
-  hide('#login', 100);  
-  return false;
 }
 
 function hide(selector, ms) {
@@ -102,7 +79,6 @@ function up() {
     }
     else {
 	getPrevious();
-	play();
     }
 }
 
@@ -114,8 +90,7 @@ function down() {
 	$(items[selected]).select();
     }
     else {
-	getNext();
-	play();
+	  getNext();
     }
 }
 
