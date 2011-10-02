@@ -15,7 +15,6 @@ function login() {
   pass = $('#pass').val();
   $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
       {email: user, password: pass}, function(json) {
-    stage = 1;
     eval(json);
     playlist = tumblr_api_read.posts;
     var post = getFirst();
@@ -29,6 +28,10 @@ function hide(selector, ms) {
   $(selector).animate({opacity: 0}, ms, function() {
     $(selector).addClass("hidden");
   });
+}
+
+function show(selector, ms) {
+  $(selector).removeClass("hidden").animate({opacity: 1}, ms);
 }
 
 function getKey(key){
@@ -61,11 +64,16 @@ function down() {
 }
 
 function left() {
-
+  if (stage == 1) {
+    $('#player').addClass('hidden');
+    show('#login', 100);
+    stage = 0;
+  }
 }
 
 function right() {
   if (stage == 0) {
+    stage = 1;
     login();
   }
 }
