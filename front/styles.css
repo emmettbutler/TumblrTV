@@ -1,0 +1,38 @@
+body, html {
+  margin: 0; padding: 0;
+  background: green;
+  font: 16pt Helvetica, Sans-serif;
+}
+
+#login {
+  color: white;
+  padding-left: 5em;
+}
+
+  #login h1 {
+    font-size: 3em;
+    font-weight: normal;
+    margin: 2em 0 .5em 0;
+    padding: 0;
+  }
+
+  #login input {
+    width: 30em;
+    font: 16pt Helvetica, Sans-serif;
+    display: block;
+    border: 3px solid black;
+    margin-bottom: .75em;
+    padding: .5em;
+  }
+
+  #login #submit {
+    width: 8em;
+  }
+
+#menu {
+  display: none;
+}
+
+#player {
+  display: none;
+}
