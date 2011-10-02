@@ -1,7 +1,9 @@
 body, html {
   margin: 0; padding: 0;
-  background: green;
-  font: 16pt Helvetica, Sans-serif;
+  background: blue;
+  font-family: 'Droid Sans', sans-serif;
+  /font: 16pt Helvetica, Sans-serif;
+  display: block;
 }
 
 .hidden {
@@ -10,6 +12,7 @@ body, html {
 
 #login {
   color: white;
+  display: block;
   padding-left: 5em;
 }
 
@@ -21,16 +24,22 @@ body, html {
   }
 
   #login input {
-    width: 30em;
-    font: 16pt Helvetica, Sans-serif;
+    width: 18em;
     display: block;
     border: 3px solid black;
     margin-bottom: .75em;
     padding: .5em;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+    -moz-box-shadow: 5px 5px 5px #222;
+    -webkit-box-shadow: 5px 5px 5px #222;
+    box-shadow: 5px 5px 5px #222;
   }
 
   #login #submit {
     width: 8em;
+    margin-left: 4.7em;
   }
 
 #menu {
