@@ -2,6 +2,10 @@ var user;
 var pass;
 var playlist;
 var cur_post;
+var stage = 0;
+var selected = 0;
+var numitems = 3;
+var items = ['#user', '#pass', '#submit'];
 
 function getFirst() {
   return playlist[0]; 
@@ -12,6 +16,7 @@ function login() {
   pass = $('#pass').val();
   $.post('http://www.tumblr.com/api/dashboard/json?type=video', 
       {email: user, password: pass}, function(json) {
+    stage = 1;
     eval(json);
     playlist = tumblr_api_read.posts;
     var post = getFirst();
@@ -38,16 +43,35 @@ function getKey(key){
   return keycode;
 }
 
+function up() {
+
+}
+
+function down() {
+  if (stage == 0) {
+    selected = (selected + 1) % numitems;
+    $(items[selected]).select();
+  }
+}
+
+function left() {
+
+}
+
+function right() {
+
+}
+
 $(function() {
   $('#user').select();
   $('#submit').click(login);
 
   $(document).keydown(function (eh) {
     var keycode = getKey(eh);
-    if (keycode == 37) alert("Left");
-    else if (keycode == 38) alert("Up");
-    else if (keycode == 39) alert("Right");
-    else if (keycode == 40) alert("Down");
+    if (keycode == 37) left();
+    else if (keycode == 38) up();
+    else if (keycode == 39) right();
+    else if (keycode == 40) down();
   });
 
 });
