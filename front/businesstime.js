@@ -67,10 +67,8 @@ function getPrevious() {
 }
 
 function play() {
-<<<<<<< HEAD
     $('#player').removeClass("hidden").html($(enable_fullscreen(playlist[cur_pos]['video-player'])));
 	$('.cover').removeClass("hidden");
-=======
 	// show growl-like notification
 	$.gritter.add({
 		title: playlist[cur_pos]['tumblelog']['title'],
@@ -80,7 +78,6 @@ function play() {
 		time: '7500'
 	});		
    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
->>>>>>> eb8e9a08beedd23ce83947aa68f16830764daa21
 }
 
 function login() {
