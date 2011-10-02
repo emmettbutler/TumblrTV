@@ -19,7 +19,6 @@ function fetchVideos() {
 
 function getNext() {
   cur_pos++;
-  alert(cur_pos);
   if (cur_pos == playlist.length)  
     fetchVideos();
   else
@@ -39,6 +38,8 @@ function play() {
 function login() {
     user = $('#user').val();
     pass = $('#pass').val();
+    cur_pos = 0;
+    playlist = [];
 
     fetchVideos();
 	
