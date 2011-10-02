@@ -13,6 +13,7 @@ function fetchVideos() {
       {email: user, password: pass, start: playlist.length},  function(json) {
 	eval(json);
 	playlist = playlist.concat(tumblr_api_read.posts);
+    incrTillYouTube();
     play();
   });
 }
@@ -28,18 +29,34 @@ function enable_fullscreen(embed_code) {
 	return embed_code;
 }
 
+function incrTillYouTube() {
+  var reg = /www.youtube.com/g;
+  while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos + 1 < playlist.length) {
+    cur_pos++;
+  }
+}
+
+function decrTillYouTube() {
+  var reg = /www.youtube.com/g;
+  while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos > 0) {
+    cur_pos--;
+  }
+}
+
 function getNext() {
-  reg = /www.youtube.com/g;
-  do {
-    if (cur_pos + 1 < playlist.length)  
-      cur_pos++;
-  } while (reg.test(playlist[curpos]['video-player']));
+  if (cur_pos + 1 < playlist.length) {
+    cur_pos++;
+    incrTillYouTube();
+    play();
+  }
 }
 
 function getPrevious() {
-  if (cur_pos > 0)
+  if (cur_pos > 0) {
 	cur_pos--;
-  play();
+    decrTillYouTube();
+    play();
+  }
 }
 
 function play() {
