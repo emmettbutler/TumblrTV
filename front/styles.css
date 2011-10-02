@@ -1,12 +1,18 @@
 body, html {
   margin: 0; padding: 0;
-  background: blue;
+  background: #555555;
   font-family: 'Droid Sans', sans-serif;
   display: block;
 }
 
 .hidden {
   display: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  border-radius: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 #login {
