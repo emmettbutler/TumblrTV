@@ -1,8 +1,11 @@
 <?php
-// pass $_GET[email] and $_GET[password]
 
+$email = $_POST[email];
+$pass = $_POST[password];
 
-$url = "curl --data 'email={$_GET[email]}&password={$_GET[password]}' http://www.tumblr.com/api/dashboard/json?type=video";
+$start = $_POST[start];
+
+$url = "curl --data 'email={$email}&password={$pass}' http://www.tumblr.com/api/dashboard/json?type=video&num=50&start=" . $start;
 
 echo shell_exec($url);
 ?>
