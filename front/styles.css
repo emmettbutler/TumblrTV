@@ -1,14 +1,10 @@
-@font-face {
-    font-family: "Grease";
-	src: url("grease.ttf");
-}
-
-body {
-  margin: 0; 
+body, html {
+  width: 971px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto; 
   padding: 0;
-  background: url(wood.jpg) ;
-  background-repeat: repeat-x repeat-y;
-  font-family: 'Grease', sans-serif;
+  background: black;
   display: block;
 }
 
@@ -16,38 +12,68 @@ body {
   display: none;
 }
 
+#frame {
+  width: 971px;
+  height: 719px;
+  background: url('images/frame.png');
+  z-index: 2;
+  position: absolute;
+}
+
 #login {
-  color: #BBBBBB;
-  padding-left: 5em;
+  position: relative;
+  width: 630px;
+  height: 393px;
+  top: 151px;
+  left: 112px;
+  padding: 91 0  0 115;
+  background: url('images/screen.png');
 }
 
   #login h1 {
-    font-size: 6em;
-    font-weight: normal;
-    margin: 1em 0 .5em 0;
+    text-indent: -1000000em;
+    width: 477px;
+    height: 63px;
+    margin: 0;
     padding: 0;
+    background: url('images/login.png');
   }
 
   #login input {
-    width: 20em;
-    font-family: "Droid Sans";
-	font-size: 2.5em;
-    border: 3px solid black;
+    font-family: Helvetica, Arial, Sans-serif;
+    background: #dfdfdf;
+    width: 500px;
+	font-size: 18pt;
+    border: 3px solid #07008b;
+    color: #07008b;
     margin-bottom: .75em;
     padding: .5em;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-    -moz-box-shadow: 5px 5px 5px #222;
-    -webkit-box-shadow: 5px 5px 5px #222;
-    box-shadow: 5px 5px 5px #222;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+    -moz-box-shadow: 0px 5px 5px #999;
+    -webkit-box-shadow: 0px 5px 5px #999;
+    box-shadow: 0px 5px 5px #999;
   }
 
-  #login #submit {
-    width: 8em;
+  #login #go {
+    display: table-cell;
+    font-family: Helvetica, Arial, Sans-serif;
+    background: #dfdfdf;
+	font-size: 18pt;
+    border: 3px solid #07008b;
+    color: #07008b;
+    margin-bottom: .75em;
+    margin-left: 200px;  
+    padding: .5em 2em;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+    -moz-box-shadow: 0px 5px 5px #999;
+    -webkit-box-shadow: 0px 5px 5px #999;
+    box-shadow: 0px 5px 5px #999;
   }
 
-<<<<<<< HEAD
 .cover {
 	width: 100%;
 	height: 100%;
@@ -62,13 +88,10 @@ body {
 }
 
 #player {
-z-index: 1 !important;
+  position: relative;
+  width: 800px;
+  height: 550px;
+  top: 110px;
+  left: 100px;
 }
-=======
-	#menu {
-	}
 
-	#player {
-		z-index: 0;
-	}
->>>>>>> eb8e9a08beedd23ce83947aa68f16830764daa21

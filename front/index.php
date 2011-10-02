@@ -15,13 +15,15 @@
     <script type="text/javascript" src="boxee-control.js"></script>
   </head>
   <body>
+    <div id="frame">
+    </div>
     <section id="login">
       <form action="#" id="loginform">
         <h1>Sign in to Tumblr.</h1>
         <input type="text" name="user" id="user" value="emmett.butler321@gmail.com" placeholder="Username" />
         <input type="password" name="pass" id="pass" value="April16!" placeholder="Password" />
+        <a href="#" id="go">Log in</a>
       </form>
-	<a href="#" onclick="right()">Log in</a>
     </section>
     <section id="menu" class="hidden">
     </section>
