@@ -3,16 +3,13 @@
 	src: url("grease.ttf");
 }
 
-body, html {
-  margin: 0; padding: 0;
-  background: url(wood.jpg) no-repeat center center fixed;
-  background-size: 100%;
+body {
+  margin: 0; 
+  padding: 0;
+  background: url(wood.jpg) ;
+  background-repeat: repeat-x repeat-y;
   font-family: 'Grease', sans-serif;
   display: block;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
 .hidden {
