@@ -15,9 +15,15 @@ function playPrevious(id) {
 }
 
 
+/* return the youtube video object */
+/* will be replaced by embedly */
 function getYouTubeVideo(ytid) {
 		autoplay  = 1; // start playing when loaded
 		controls  = 0; // hide player chrome. we'll handle all controls
 		disablekb = 1; // turn off youtube default keyboard controls
-		enablejsapi = 1; 
+		enablejsapi = 1; // youtube javascript api
+}
+
+function getVimeoVideo(vimeoid) {
+
 }
