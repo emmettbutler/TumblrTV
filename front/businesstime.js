@@ -8,7 +8,7 @@ var items = ['#user', '#pass'];
 
 
 function fetchVideos() {
-  alert("fetching from " + playlist.length);
+  //alert("fetching from " + playlist.length);
   $.post("get-bullshit.php?start=" + playlist.length, 
       {email: user, password: pass, start: playlist.length},  function(json) {
 	eval(json);
@@ -25,15 +25,15 @@ function enable_fullscreen(embed_code) {
 		embed_code = embed_code.replace(/&amp;rel=0/g,"&amp;autoplay=1&amp;rel=0");
 		embed_code = embed_code.replace(/width=\"\d+\" height=\"\d+\"/g, "width=\"100%\" height=\"100%\" autoplay=\"true\"");
 	}
-
+	return embed_code;
 }
 
 function getNext() {
-  cur_pos++;
-  if (cur_pos == playlist.length)  
-    fetchVideos();
-  else
-    play();
+  reg = /www.youtube.com/g;
+  do {
+    if (cur_pos + 1 < playlist.length)  
+      cur_pos++;
+  } while (reg.test(playlist[curpos]['video-player']));
 }
 
 function getPrevious() {
@@ -43,7 +43,7 @@ function getPrevious() {
 }
 
 function play() {
-    $('#player').removeClass("hidden").html(playlist[cur_pos]['video-player']);
+    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
 }
 
 function login() {
