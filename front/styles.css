@@ -2,7 +2,6 @@ body, html {
   margin: 0; padding: 0;
   background: blue;
   font-family: 'Droid Sans', sans-serif;
-  /font: 16pt Helvetica, Sans-serif;
   display: block;
 }
 
@@ -17,15 +16,16 @@ body, html {
 }
 
   #login h1 {
-    font-size: 3em;
+    font-size: 5em;
     font-weight: normal;
-    margin: 2em 0 .5em 0;
+    margin: 1em 0 .5em 0;
     padding: 0;
   }
 
   #login input {
-    width: 18em;
+    width: 20em;
     display: block;
+	font-size: 2.5em;
     border: 3px solid black;
     margin-bottom: .75em;
     padding: .5em;
@@ -39,7 +39,6 @@ body, html {
 
   #login #submit {
     width: 8em;
-    margin-left: 4.7em;
   }
 
 #menu {
