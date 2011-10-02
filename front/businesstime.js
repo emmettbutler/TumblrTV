@@ -84,6 +84,7 @@ function left() {
   if (stage == 1) {
     $('#player').addClass('hidden');
     show('#login', 100);
+	cur_pos = 0;
     stage = 0;
   }
 }
