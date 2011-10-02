@@ -58,23 +58,19 @@ function getNext() {
 
 function getPrevious() {
   if (cur_pos > 0) {
-	cur_pos--;
+	 cur_pos--;
     decrTillYouTube();
     play();
   }
 }
 
 function play() {
+	// show growl-like notification
 	$.gritter.add({
-		// (string | mandatory) the heading of the notification
 		title: playlist[cur_pos]['tumblelog']['title'],
-		// (string | mandatory) the text inside the notification
 		text: (playlist[cur_pos]['video-caption'] ? playlist[cur_pos]['video-caption'] : playlist[cur_pos]['date']),
-		// (string | optional) the image to display on the left
 		image: playlist[cur_pos]['tumblelog']['avatar_url_40'],
-		// (bool | optional) if you want it to fade out on its own or just sit there
 		sticky: false,
-		// (int | optional) the time you want it to be alive for before fading out
 		time: '7500'
 	});		
    $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
@@ -94,7 +90,7 @@ function login() {
 
 function hide(selector, ms) {
     $(selector).animate({opacity: 0}, ms, function() {
-	$(selector).addClass("hidden");
+	 $(selector).addClass("hidden");
     });
 }
 
@@ -105,6 +101,8 @@ function show(selector, ms) {
 function showLogin() {
   $('#player').addClass('hidden');
   show('#login', 100);
+  cur_pos = 0;
+  stage = 0;
 }
 
 function getKey(key){
@@ -143,16 +141,8 @@ function down() {
 }
 
 function left() {
-    if (stage == 1) {
-	$('#player').addClass('hidden');
-	show('#login', 100);
-	cur_pos = 0;
-	stage = 0;
-    }
-
   if (stage == 1) {
     showLogin();
-    stage = 0;
   }
 }
 
@@ -180,7 +170,7 @@ $(function() {
     showLogin();
   });
 
-  $(document).keydown(function (eh) {
+  $(document).keyup(function (eh) {
     var keycode = getKey(eh);
     if (keycode == 37) left();
     else if (keycode == 38) up();
