@@ -3,14 +3,21 @@ var pass;
 var playlist;
 var cur_id;
 
+function getFirst() {
+  return playlist[0]; 
+}
+
 function login() {
   user = $('#user').val();
   pass = $('#pass').val();
   $.post('http://www.tumblr.com/api/dashboard/json?type=video', {email: user, password: pass}, function(json) {
-    playlist = json;
-    alert(playlist);
+    eval(json);
+    playlist = tumblr_api_read.posts;
+    $('#player').removeClass("hidden").html(getFirst().url);
+    alert(getFirst().'video-player');
   });
-  hide('#login', 100);
+  hide('#login', 100);  
+  return false;
 }
 
 function hide(selector, ms) {
@@ -19,11 +26,8 @@ function hide(selector, ms) {
   });
 }
 
-
-
 $(function() {
   $('#user').select();
   $('#submit').click(login);
 
-  //$('#player').innerHTML = getNext()['video_player'];
 });
