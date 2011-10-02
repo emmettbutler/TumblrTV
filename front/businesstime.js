@@ -27,8 +27,27 @@ function hide(selector, ms) {
   });
 }
 
+function getKey(key){
+  if ( key == null ) {
+    keycode = event.keyCode;
+    // To Mozilla
+  } else {
+    keycode = key.keyCode;
+  }
+  // Return the key in lower case form
+  return keycode;
+}
+
 $(function() {
   $('#user').select();
   $('#submit').click(login);
+
+  $(document).keydown(function (eh) {
+    var keycode = getKey(eh);
+    if (keycode == 37) alert("Left");
+    else if (keycode == 38) alert("Up");
+    else if (keycode == 39) alert("Right");
+    else if (keycode == 40) alert("Down");
+  });
 
 });
