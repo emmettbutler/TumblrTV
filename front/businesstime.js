@@ -1,7 +1,7 @@
 var user;
 var pass;
 var playlist;
-var cur_id;
+var cur_post;
 
 function getFirst() {
   return playlist[0]; 
