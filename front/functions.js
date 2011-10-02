@@ -16,14 +16,8 @@ function getPrevious(id) {
 }
 
 function play(post) {
-		$(post.url).embedly({
-				key:':531a832eec9e11e0bd394040d3dc5c07',
-				wmode: 'window',
-				autoplay: true,
-				success: function(oembed, dict){
-            alert(oembed.title);
-        });
-		});
+
+		 
 }
 
 
