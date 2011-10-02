@@ -67,7 +67,6 @@ function getPrevious() {
 }
 
 function play() {
-    $('#player').removeClass("hidden").html($(enable_fullscreen(playlist[cur_pos]['video-player'])));
 	$('.cover').removeClass("hidden");
 	// show growl-like notification
 	$.gritter.add({
