@@ -32,11 +32,8 @@ function login() {
 	success : function(json) {
 	    alert(json);
 	    eval(json);
-	    alert('2');
 	    playlist = tumblr_api_read.posts;
-	    alert('3');
 	    play();
-	    alert('4');
 	},
 	error : function(msg) {
 	    alert("error" + msg);
