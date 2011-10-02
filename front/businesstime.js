@@ -79,6 +79,11 @@ function play() {
     $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
 }
 
+$('#go').live('click', function(event) {
+    event.preventDefault();
+    login();
+});
+
 function login() {
     user = $('#user').val();
     pass = $('#pass').val();
