@@ -186,12 +186,4 @@ $(function() {
     stage = 0;
     showLogin();
   });
-
-  $(document).keyup(function (eh) {
-    var keycode = getKey(eh);
-    if (keycode == 37) left();
-    else if (keycode == 38) up();
-    else if (keycode == 39) right();
-    else if (keycode == 40) down();
-  });
 });
