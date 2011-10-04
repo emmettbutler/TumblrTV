@@ -20,7 +20,7 @@ function fetchVideos() {
   });
 }
 
-/* adds autoplay and scales video to full size with js regex. hacky, but fuck it. */
+// adds autoplay and scales video to full size with js regex. hacky, but fuck it. 
 function enable_fullscreen(embed_code) {
 	if (/www.youtube.com/g.test(embed_code)) {
 		embed_code = embed_code.replace("<\/param>","<\/param><param name=\"autoplay\" value=\"true\"><\/param><param name=\"controls\" value=\"0\"><\/param>");
@@ -31,7 +31,7 @@ function enable_fullscreen(embed_code) {
 	return embed_code;
 }
 
-/* we only want youtube videos now, so only show youtube videos. */
+// we only want youtube videos now, so only show youtube videos. 
 function incrTillYouTube() {
   var reg = /www.youtube.com/g;
   while (!reg.test(playlist[cur_pos]['video-player']) && cur_pos + 1 < playlist.length) {
@@ -78,6 +78,12 @@ function play() {
 	$('#cover').removeClass("hidden");
     $('#player').removeClass("hidden").html(enable_fullscreen(playlist[cur_pos]['video-player']));
 }
+
+$('#go').live('click', function(event) {
+    alert('1');
+    event.preventDefault();
+    login();
+});
 
 function login() {
     user = $('#user').val();
@@ -176,18 +182,8 @@ $(function() {
 	}
     });
 
-
   $(document).ajaxError(function() {
     stage = 0;
     showLogin();
   });
-
-  $(document).keyup(function (eh) {
-    var keycode = getKey(eh);
-    if (keycode == 37) left();
-    else if (keycode == 38) up();
-    else if (keycode == 39) right();
-    else if (keycode == 40) down();
-  });
 });
-

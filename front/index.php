@@ -22,7 +22,7 @@
         <h1>Sign in to Tumblr.</h1>
         <input type="text" name="user" id="user" placeholder="Email" />
         <input type="password" name="pass" id="pass" placeholder="Password" />
-        <a href="#" id="go">Log in</a>
+        <input type="submit" id="go" value="Log in" />
       </form>
     </section>
     
