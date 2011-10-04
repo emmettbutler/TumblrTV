@@ -94,6 +94,7 @@ function login() {
     fetchVideos();
 	
     hide('#login', 100);  
+    right();
     return false;
 }
 
