@@ -1,40 +1,101 @@
 body, html {
-  margin: 0; padding: 0;
-  background: green;
-  font: 16pt Helvetica, Sans-serif;
+  width: 971px;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto; 
+  padding: 0;
+  background: black;
+  display: block;
 }
 
 .hidden {
   display: none;
 }
 
+#frame {
+  width: 971px;
+  height: 719px;
+  background: url('images/frame2.png');
+  z-index: 2;
+  position: absolute;
+}
+
 #login {
-  color: white;
-  padding-left: 5em;
+  position: relative;
+  width: 605px;
+  height: 335px;
+  top: 168px;
+  left: 122px;
+  padding: 91 0  0 115;
+  background: url('images/screensm.png');
+  z-index: 3;
 }
 
   #login h1 {
-    font-size: 3em;
-    font-weight: normal;
-    margin: 2em 0 .5em 0;
+    text-indent: -1000000em;
+    width: 477px;
+    height: 63px;
+    margin: 0;
+    margin-bottom: .5em;
+    margin-top: -1em;
     padding: 0;
+    background: url('images/login.png');
   }
 
   #login input {
-    width: 30em;
-    font: 16pt Helvetica, Sans-serif;
-    display: block;
-    border: 3px solid black;
+    font-family: Helvetica, Arial, Sans-serif;
+    background: #dfdfdf;
+    width: 500px;
+	font-size: 18pt;
+    border: 3px solid #07008b;
+    color: #07008b;
     margin-bottom: .75em;
     padding: .5em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+    -moz-box-shadow: 0px 5px 5px #999;
+    -webkit-box-shadow: 0px 5px 5px #999;
+    box-shadow: 0px 5px 5px #999;
   }
 
-  #login #submit {
-    width: 8em;
+  #login #go {
+    display: table-cell;
+    text-decoration: none;
+    font-family: Helvetica, Arial, Sans-serif;
+    background: #dfdfdf;
+	font-size: 18pt;
+    border: 3px solid #07008b;
+    color: #07008b;
+    margin-bottom: .75em;
+    margin-left: 200px;  
+    padding: .5em 2em;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+    -moz-box-shadow: 0px 5px 5px #999;
+    -webkit-box-shadow: 0px 5px 5px #999;
+    box-shadow: 0px 5px 5px #999;
   }
+
+#cover {
+	width: 100%;
+	height: 100%;
+	z-index: 1000 !important;
+	background-color: rgba(0, 0, 0, 0);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
 
 #menu {
 }
 
 #player {
+  position: relative;
+  width: 800px;
+  height: 550px;
+  top: 110px;
+  left: 100px;
 }
+
