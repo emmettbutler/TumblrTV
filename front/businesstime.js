@@ -94,6 +94,7 @@ function login() {
     fetchVideos();
 	
     hide('#login', 100);  
+    right();
     return false;
 }
 
@@ -174,7 +175,7 @@ $(function() {
 	else if (keycode == 40) down();
 	
 	// don't use w-a-s-d keys for nav if we're on login page
-	if (state != 0) {
+	if (stage != 0) {
 		if (keycode == 87) up();
 		else if (keycode == 83) down();
 		else if (keycode == 65) left();
